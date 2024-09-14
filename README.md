@@ -98,7 +98,7 @@ python src/main.py <start_url> [--formats FORMAT [FORMAT ...]] [--output OUTPUT_
 
 3. Scrape a website with custom output directory and concurrency, saving in all available formats:
    ```
-   python src/main.py https://microsoft.github.io/autogen/docs/Getting-Started --formats markdown pdf html --output ./my_scrapes --concurrency 10
+   python src/main.py https://microsoft.github.io/autogen/docs/Getting-Started --formats markdown pdf html --output ./autogen_doc --concurrency 10
    ```
 
 ## 📂 Output
@@ -116,10 +116,11 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgements
 - [OpenAI](https://openai.com/)
 - [Cursor](https://www.cursor.com/)
+- [Aider](https://aider.chat/)
 - [markdownify](https://github.com/matthewwithanm/python-markdownify)
 
 ## 👤 Author
 
-Your Name - [Your GitHub Profile](https://github.com/yourusername)
+@LinearUncle - [X/Twitter](https://x.com/LinearUncle)
 
 Project Link: [https://github.com/yourusername/website-scraper](https://github.com/yourusername/website-scraper)
