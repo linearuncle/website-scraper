@@ -37,6 +37,8 @@ class WebsiteScraper:
         else:
             self.output_dir = output_dir
         self.formats = formats if formats else ['markdown']
+        if 'markdown' not in self.formats:
+            self.formats.append('markdown')
         self.domain = self.get_domain(start_url)
         self.visited = set()
         self.to_visit = asyncio.Queue()
