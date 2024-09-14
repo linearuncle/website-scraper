@@ -35,24 +35,24 @@ It's recommended to use a virtual environment to avoid conflicts with other Pyth
 
 1. Create a virtual environment:
    ```
-   python3 -m venv venv
+   python3 -m venv .venv
    ```
 
 2. Activate the virtual environment:
    ```
-   source venv/bin/activate
+   source .venv/bin/activate
    ```
 
 #### For Windows:
 
 1. Create a virtual environment:
    ```
-   python -m venv venv
+   python -m venv .venv
    ```
 
 2. Activate the virtual environment:
    ```
-   venv\Scripts\activate
+   .venv\Scripts\activate
    ```
 
 ### Installing Dependencies
