@@ -36,7 +36,7 @@ class WebsiteScraper:
             self.output_dir = os.path.join(os.path.dirname(SCRIPT_DIR), "download", self.website_name)
         else:
             self.output_dir = output_dir
-        self.formats = formats or ['markdown']
+        self.formats = formats if formats else ['markdown']
         self.domain = self.get_domain(start_url)
         self.visited = set()
         self.to_visit = asyncio.Queue()
@@ -231,15 +231,8 @@ class WebsiteScraper:
         logging.info("Crawling task completed")
 
 async def main(start_url, formats, output_dir, concurrency):
-    """
-    Main function to run the website scraper.
-
-    Args:
-        start_url (str): The starting URL for scraping.
-        formats (list): List of formats to save content in.
-        output_dir (str): The output directory for saved content.
-        concurrency (int): Number of concurrent scraping tasks.
-    """
+    if not formats:
+        formats = ['markdown']
     scraper = WebsiteScraper(start_url, output_dir, formats, concurrency)
     await scraper.run()
 
