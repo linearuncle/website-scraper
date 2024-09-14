@@ -33,7 +33,7 @@ class WebsiteScraper:
         self.start_url = start_url
         self.website_name = self.get_website_name(start_url)
         if not output_dir:
-            self.output_dir = os.path.join(SCRIPT_DIR, "download", self.website_name)
+            self.output_dir = os.path.join(os.path.dirname(SCRIPT_DIR), "download", self.website_name)
         else:
             self.output_dir = output_dir
         self.formats = formats or ['markdown']
@@ -181,9 +181,11 @@ class WebsiteScraper:
         """
         # Ensure the download directory exists
         download_dir = os.path.dirname(self.output_dir)
-        if not os.path.exists(download_dir):
-            os.makedirs(download_dir)
-            logging.info(f"Created download root directory: {download_dir}")
+        # Ensure the download root directory exists
+        download_root_dir = os.path.dirname(self.output_dir)
+        if not os.path.exists(download_root_dir):
+            os.makedirs(download_root_dir)
+            logging.info(f"Created download root directory: {download_root_dir}")
 
         # Ensure the website-specific output directory exists
         if not os.path.exists(self.output_dir):
