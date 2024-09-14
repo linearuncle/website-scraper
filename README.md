@@ -98,7 +98,7 @@ python src/main.py <start_url> [--formats FORMAT [FORMAT ...]] [--output OUTPUT_
 
 3. Scrape a website with custom output directory and concurrency, saving in all available formats:
    ```
-   python src/main.py https://microsoft.github.io/autogen/docs/Getting-Started --formats markdown pdf html --output ./my_scrapes --concurrency 3
+   python src/main.py https://microsoft.github.io/autogen/docs/Getting-Started --formats markdown pdf html --output ./my_scrapes --concurrency 10
    ```
 
 ## 📂 Output

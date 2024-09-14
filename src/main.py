@@ -20,7 +20,7 @@ class WebsiteScraper:
     A class for scraping websites and saving content in various formats.
     """
 
-    def __init__(self, start_url, output_dir="", formats=None, concurrency=10):
+    def __init__(self, start_url, output_dir, formats, concurrency):
         """
         Initialize the WebsiteScraper.
 
@@ -36,9 +36,7 @@ class WebsiteScraper:
             self.output_dir = os.path.join(os.path.dirname(SCRIPT_DIR), "download", self.website_name)
         else:
             self.output_dir = output_dir
-        self.formats = formats if formats else ['markdown']
-        if 'markdown' not in self.formats:
-            self.formats.append('markdown')
+        self.formats = formats
         self.domain = self.get_domain(start_url)
         self.visited = set()
         self.to_visit = asyncio.Queue()
@@ -233,8 +231,6 @@ class WebsiteScraper:
         logging.info("Crawling task completed")
 
 async def main(start_url, formats, output_dir, concurrency):
-    if not formats:
-        formats = ['markdown']
     scraper = WebsiteScraper(start_url, output_dir, formats, concurrency)
     await scraper.run()
 
@@ -244,7 +240,9 @@ if __name__ == "__main__":
     parser.add_argument('--formats', nargs='+', choices=['markdown', 'pdf', 'html'], 
                         default=['markdown'], help='Choose file formats to save')
     parser.add_argument('--output', help='Specify output directory')
-    parser.add_argument('--concurrency', type=int, default=10, help='Number of concurrent crawling tasks')
+    parser.add_argument('--concurrency', type=int, default=5, help='Number of concurrent crawling tasks')
     args = parser.parse_args()
+
+    logging.info(f"args Starting URL: {args.start_url}, Output directory: {args.output}, Formats: {args.formats}, Concurrency: {args.concurrency}")
 
     asyncio.run(main(args.start_url, args.formats, args.output, args.concurrency))

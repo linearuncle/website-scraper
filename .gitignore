@@ -2,3 +2,23 @@
 __pycache__/
 .venv/
 .env
+download/
+venv/
+src/download/
+
+# conda
+.conda/
+# aider 
+*.aider*
+
+
+.DS_Store
+
+# pdf
+*.pdf
+
+# html
+*.html
+
+# markdown
+*.md
